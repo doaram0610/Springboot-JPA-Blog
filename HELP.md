@@ -48,32 +48,32 @@ git push origin master
 
 
 1. 연결 : 최초 한번만 한다 그다음 부턴 pull -> push
-git init
-git remote add origin 주소
+	git init
+	git remote add origin 주소
 
 
 
 2. 가져오기 올리기
-push 자료 올리기
-pull 자료 가져오기
-순서 : pull -> push
+	push 자료 올리기
+	pull 자료 가져오기
+	순서 : pull -> push
 
-<pull>
-	git pull origin master
+	<pull>
+		git pull origin master
 
 
-<push>
-	-- 상태 체크
-	git status
-	
-	-- 모든파일을 tracking
-	git add .
-	
-	-- commit 달기
-	git commit -m "환경세팅완료 v1"
-	
-	-- 실제로 git 에 push
-	git push origin master	
+	<push>
+		-- 상태 체크
+		git status
+		
+		-- 모든파일을 tracking
+		git add .
+		
+		-- commit 달기
+		git commit -m "환경세팅완료 v1"
+		
+		-- 실제로 git 에 push
+		git push origin master	
 	
 	
 	

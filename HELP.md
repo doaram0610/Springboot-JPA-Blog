@@ -89,8 +89,19 @@ web.xml, root-context.xml, servlet-contet.xml 을 모두 합친것 = application
 ### JPA 사용하기  https://getinthere.tistory.com/23
 JPA = ORM = Object 가 테이블로 만드어지는 기술
 
+### library 생성 위치 변경 하기
+원하는 위치에 (기본 C:\Users\사용자명\.m2) settings.xml을 생성한다.
+eclipse-Window-Preferences-Maven-User Settings에 생성한 settings.xml 파일 경로로 변경한다.
 
+<localRepository>repository 폴더 생성 할 경로</localRepository>
 
+<?xml version="1.0"?>
+
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/SETTINGS/1.0.0">
+
+<localRepository>D:/Dev/eGovFrameDev-3.7.0-64bit/maven_repository_3_7/repository</localRepository>
+
+</settings>
 
 
 

@@ -1,15 +1,18 @@
 package com.cos.blog.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity //User클래스가 MySql에 테이블 생성
+@Entity //Board클래스가 MySql에 테이블 생성
 public class Board {
 
 	@Id 
@@ -42,6 +45,9 @@ public class Board {
 	@ManyToOne	// Many = Board, One = User  다대일
 	@JoinColumn(name = "userId")
 	private User user;	//DB 는 오브젝트를 저장할수 없다. FK,자바는 오브젝트를 저장할 수 있다.
+	
+	@OneToMany(mappedBy="board", fetch=FetchType.LAZY)
+	private List<Reply> reply;
 	
 	@CreationTimestamp
 	private Timestamp createDate;

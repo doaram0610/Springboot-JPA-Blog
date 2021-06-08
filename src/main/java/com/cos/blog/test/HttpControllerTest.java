@@ -17,6 +17,7 @@ public class HttpControllerTest {
 
 	private static final String TAG="HttpControllerTest";
 	
+	//http://localhost:8000/http/lombok
 	@GetMapping("/http/lombok")
 	public String lombokTest() {
 		

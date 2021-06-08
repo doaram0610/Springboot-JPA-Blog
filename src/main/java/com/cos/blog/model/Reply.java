@@ -1,6 +1,6 @@
 package com.cos.blog.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -22,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity //User클래스가 MySql에 테이블 생성
+@Entity //Reply클래스가 MySql에 테이블 생성
 public class Reply {
 
 	@Id 
@@ -32,11 +31,11 @@ public class Reply {
 	@Column(nullable = false, length = 200)
 	private String content;	
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "boardId")
 	private Board board;
 	
-	@ManyToOne
+	@ManyToOne	// Reply 와 User 의 관계
 	@JoinColumn(name = "userId")
 	private User user;
 	

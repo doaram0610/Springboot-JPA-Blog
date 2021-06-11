@@ -75,7 +75,8 @@ git push origin master
 		-- 실제로 git 에 push
 		git push origin master	
 	
-	
+3. config설정
+	git config --list	
 	
 	
 ### lombok 설정하기

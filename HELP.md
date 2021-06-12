@@ -25,7 +25,7 @@ The following guides illustrate how to use some features concretely:
 
 ####################################################################################
 ### 유트부 강좌 : Springboot - 나만의 블로그 만들기 총 73강
-	스프링부트 강좌 26강(블로그 프로젝트) -->> 요거 부터 듣기
+	스프링부트 강좌 30강(블로그 프로젝트) -->> 요거 부터 듣기
 	
 ### 추가했던 library 6개 
 	Spring Boot DevTool : 자동재시작
@@ -89,6 +89,17 @@ web.xml, root-context.xml, servlet-contet.xml 을 모두 합친것 = application
 
 ### JPA 사용하기  https://getinthere.tistory.com/23
 JPA = ORM = Object 가 테이블로 만드어지는 기술
+
+-- 유저이름@아이피주소
+create user 'cos'@'%' identified by 'jang1234';
+
+-- ON DB이름.테이블명
+-- TO 유저이름@아이피주소
+GRANT ALL PRIVILEGES ON *.* TO 'cos'@'%';
+CREATE DATABASE blog CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+use blog;
+
+
 
 ### library 생성 위치 변경 하기
 원하는 위치에 (기본 C:\Users\사용자명\.m2) settings.xml을 생성한다.

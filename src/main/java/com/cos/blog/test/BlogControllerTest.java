@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController	
 public class BlogControllerTest {
 	
-	//http://localhost:8080/test/hello
-	//http://localhost:8000/blog/http/lombok
+	//http://localhost:8080/blog/test/hello
 	@GetMapping("/test/hello")
 	public String hello() {
 		return "<h1>hello spring boot</h1>";

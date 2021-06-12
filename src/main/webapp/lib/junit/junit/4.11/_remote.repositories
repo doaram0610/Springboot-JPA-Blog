@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Jun 11 23:39:36 KST 2021
+junit-4.11-sources.jar>central=
+junit-4.11.pom>central=
+junit-4.11.jar>central=

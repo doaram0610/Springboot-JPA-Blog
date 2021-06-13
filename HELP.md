@@ -25,7 +25,7 @@ The following guides illustrate how to use some features concretely:
 
 ####################################################################################
 ### 유트부 강좌 : Springboot - 나만의 블로그 만들기 총 73강
-	스프링부트 강좌 33강(블로그 프로젝트) -->> 요거 부터 듣기
+	스프링부트 강좌 35강(블로그 프로젝트) -->> 요거 부터 듣기
 	
 ### 추가했던 library 6개 
 	Spring Boot DevTool : 자동재시작
@@ -117,3 +117,9 @@ eclipse-Window-Preferences-Maven-User Settings에 생성한 settings.xml 파일 
 
 
 
+### bootstrap
+https://www.w3schools.com/bootstrap4/default.asp
+
+
+##
+Ctrl + Shift + F : 들여쓰기 정렬

@@ -9,6 +9,9 @@
 		$("#btn-save").on("click", ()=>{	//function(){} 대신 ()=>{} 를 사용하는 이유는 this를 바인딩하기 위해서이다.
 			this.save();
 		});
+		$("#btn-login").on("click", ()=>{	//function(){} 대신 ()=>{} 를 사용하는 이유는 this를 바인딩하기 위해서이다.
+			this.login();
+		});		
 	},	
 	save:function(){
 		let data = {
@@ -17,7 +20,7 @@
 			email: $("#email").val()
 		};
 			
-		console.log(data);
+		//console.log(data);
 		
 		//ajax 통신을 이용해서 3개의 데이터를 json 으로 변경하여 insert 요청
 		//ajax호출시 default 가 비동기 호출
@@ -26,13 +29,40 @@
 			url:"/blog/api/user",
 			data:JSON.stringify(data),	//data는 자바스크립트오브젝트이고  JSON.stringify(data)는 json 데이터이다. (http body데이터)
 			contentType: "application/json;charset=utf-8",	// body데이터가 어떤 타입인지
-			dataType:"json"	//요청을 서버로 해서 응답이 왔을 때 json 문자열로 보낼 경우 javascript object 로 변경해준다.
-			
-		}).done(function(resp){
-			alert("회원가입이 완료되었다");
+			dataType:"json"	//요청을 서버로 해서 응답이 왔을 때 json 문자열로 보낼 경우 javascript object 로 변경해준다.			
+		}).done(function(resp){						
 			console.log(resp);
-			//location.href = "/blog";
+			console.log("회원가입이 완료되었다");	
+			alert("회원가입이 완료되었다");		
+			location.href = "/blog";
 		}).fail(function(error){
+			console.log(error);
+			alert(JSON.stringify(error));
+		}); 
+	},	
+	login:function(){
+		let data = {
+			username: $("#username").val(),
+			password: $("#password").val()
+		};
+			
+		//console.log(data);
+		
+		//ajax 통신을 이용해서 3개의 데이터를 json 으로 변경하여 insert 요청
+		//ajax호출시 default 가 비동기 호출
+		$.ajax({
+			type:"POST",
+			url:"/blog/api/user/login",
+			data:JSON.stringify(data),	//data는 자바스크립트오브젝트이고  JSON.stringify(data)는 json 데이터이다. (http body데이터)
+			contentType: "application/json;charset=utf-8",	// body데이터가 어떤 타입인지
+			dataType:"json"	//요청을 서버로 해서 응답이 왔을 때 json 문자열로 보낼 경우 javascript object 로 변경해준다.			
+		}).done(function(resp){						
+			console.log(resp);
+			console.log("로그인이 완료되었다");	
+			alert("로그인이 완료되었다");		
+			location.href = "/blog";
+		}).fail(function(error){
+			console.log(error);
 			alert(JSON.stringify(error));
 		}); 
 	}

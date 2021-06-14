@@ -25,7 +25,7 @@ The following guides illustrate how to use some features concretely:
 
 ####################################################################################
 ### 유트부 강좌 : Springboot - 나만의 블로그 만들기 총 73강
-	스프링부트 강좌 38강(블로그 프로젝트) -->> 요거 부터 듣기
+	스프링부트 강좌 47강(블로그 프로젝트) -->> 요거 부터 듣기
 	
 ### 추가했던 library 6개 
 	Spring Boot DevTool : 자동재시작
@@ -40,11 +40,12 @@ The following guides illustrate how to use some features concretely:
 ### https://github.com/
 doaram0610 / infancy&79
 	
-git init
-git add .
-git commit -m "환경세팅완료 v1"
-git remote add origin 주소
-git push origin master	
+0. git Repository 최초 생성후 
+	git init
+	git add .
+	git commit -m "환경세팅완료 v1"
+	git remote add origin 주소
+	git push origin master	
 
 
 1. 연결 : 최초 한번만 한다 그다음 부턴 pull -> push
@@ -121,5 +122,12 @@ eclipse-Window-Preferences-Maven-User Settings에 생성한 settings.xml 파일 
 https://www.w3schools.com/bootstrap4/default.asp
 
 
-##
+### 이클립스 단축키
 Ctrl + Shift + F : 들여쓰기 정렬
+
+### 스프링 시작
+1. 톰캣시작
+2. web.xml
+3. context.xml -> DB연결 테스트	
+* requset -> web.xml (DB연결, 트랜젝션시작) -> 필터 -> 스트링컨테이너(Controller(응답시 트랜젝션종료,DB연결세션종료) -> Service -> Repository) -> 영속성컨텍스트(데이터를 갖고 있음) -> DB	
+	

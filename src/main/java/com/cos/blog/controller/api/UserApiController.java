@@ -17,32 +17,26 @@ import com.cos.blog.service.UserService;
 public class UserApiController {
 
 	@Autowired
-	private HttpSession session;
-	
-	@Autowired
 	private UserService userService;
 
-	@PostMapping("/api/user")
+	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("save 호출");
-		
-		user.setRole(RoleType.USER);
+
 		int result = userService.join(user);
-			
-		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),result);
 	}
 	
-	@PostMapping("/api/user/login")
-	public ResponseDto<Integer> login(@RequestBody User user) {
-		System.out.println("login 호출");
-		
-		User principal = userService.login(user);	//principal:접근주체
-
-		if(principal != null){
-			session.setAttribute("principal", principal);
-		}
-		
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-	}	
+//	@PostMapping("/api/user/login")
+//	public ResponseDto<Integer> login(@RequestBody User user, HttpSession session) {
+//		System.out.println("login 호출");
+//		
+//		User principal = userService.login(user);	//principal:접근주체
+//
+//		if(principal != null){
+//			session.setAttribute("principal", principal);
+//		}
+//		
+//		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+//	}	
 }

@@ -25,7 +25,7 @@ The following guides illustrate how to use some features concretely:
 
 ####################################################################################
 ### 유트부 강좌 : Springboot - 나만의 블로그 만들기 총 73강
-	스프링부트 강좌 47강(블로그 프로젝트) -->> 요거 부터 듣기
+	스프링부트 강좌 52강(블로그 프로젝트) -->> 요거 부터 듣기
 	
 ### 추가했던 library 6개 
 	Spring Boot DevTool : 자동재시작
@@ -131,3 +131,6 @@ Ctrl + Shift + F : 들여쓰기 정렬
 3. context.xml -> DB연결 테스트	
 * requset -> web.xml (DB연결, 트랜젝션시작) -> 필터 -> 스트링컨테이너(Controller(응답시 트랜젝션종료,DB연결세션종료) -> Service -> Repository) -> 영속성컨텍스트(데이터를 갖고 있음) -> DB	
 	
+### security taglib
+https://www.baeldung.com/spring-security-taglibs  접속해서 jsp include 형식 복사해온다
+docs.spring.io/spring-security/site/docs/3.0x/reference-access.html	security session 이용 방법

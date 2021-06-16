@@ -9,9 +9,11 @@
 		$("#btn-save").on("click", ()=>{	//function(){} 대신 ()=>{} 를 사용하는 이유는 this를 바인딩하기 위해서이다.
 			this.save();
 		});
+/*		
 		$("#btn-login").on("click", ()=>{	//function(){} 대신 ()=>{} 를 사용하는 이유는 this를 바인딩하기 위해서이다.
 			this.login();
-		});		
+		});
+*/
 	},	
 	save:function(){
 		let data = {
@@ -26,7 +28,7 @@
 		//ajax호출시 default 가 비동기 호출
 		$.ajax({
 			type:"POST",
-			url:"/blog/api/user",
+			url:"/blog/auth/joinProc",
 			data:JSON.stringify(data),	//data는 자바스크립트오브젝트이고  JSON.stringify(data)는 json 데이터이다. (http body데이터)
 			contentType: "application/json;charset=utf-8",	// body데이터가 어떤 타입인지
 			dataType:"json"	//요청을 서버로 해서 응답이 왔을 때 json 문자열로 보낼 경우 javascript object 로 변경해준다.			
@@ -39,7 +41,8 @@
 			console.log(error);
 			alert(JSON.stringify(error));
 		}); 
-	},	
+	}
+/*	,	
 	login:function(){
 		let data = {
 			username: $("#username").val(),
@@ -66,6 +69,7 @@
 			alert(JSON.stringify(error));
 		}); 
 	}
+*/	
 }
 
 index.init();

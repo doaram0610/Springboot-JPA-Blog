@@ -4,19 +4,23 @@
 
 <div class="container">
 
-	<form>
+	<form action="/auth/loginProc" method="post">
 		<div class="form-group">
-			<label for="username">Username:</label> <input type="text" class="form-control" placeholder="Enter Username" id="username">
+			<label for="username">Username:</label> 
+			<input type="text" class="form-control" placeholder="Enter Username" id="username" name="username">
 		</div>
 		<div class="form-group">
-			<label for="email">Email address:</label> <input type="password" class="form-control" placeholder="Enter Password" id="password">
+			<label for="email">Email address:</label> 
+			<input type="password" class="form-control" placeholder="Enter Password" id="password" name="password">
 		</div>
 		<div class="form-group form-check">
-			<label class="form-check-label"> <input class="form-check-input" type="checkbox"> Remember me
+			<label class="form-check-label"> 
+			<input class="form-check-input" type="checkbox" id="email" name="email"> Remember me
 			</label>
-		</div>		
+		</div>	
+		<button id="btn-login" class="btn btn-primary">로그인</button>	
 	</form>
-	<button id="btn-login" class="btn btn-primary">로그인</button>
+	
 
 </div>
 

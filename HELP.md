@@ -23,9 +23,9 @@ The following guides illustrate how to use some features concretely:
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
-####################################################################################
+
 ### 유트부 강좌 : Springboot - 나만의 블로그 만들기 총 73강
-스프링부트 강좌 번외 강(블로그 프로젝트) -->> 요거 부터 듣기
+스프링부트 강좌 65 강  11분 (블로그 프로젝트) -->> 요거 부터 듣기
 	
 ### 추가했던 library 6개 
 Spring Boot DevTool : 자동재시작
@@ -146,7 +146,7 @@ jsp(/blog/auth/loginProc) 요청
 ### 글쓰기 화면
 글쓰기 화면의 본문 html 편집기 코드 다운로드 : https://summernote.org/
 
-## 선생님 github
+### 선생님 github
 https://github.com/codingspecialist
 
 ### 스프링작동 원리
@@ -163,13 +163,41 @@ ViewResolver
 인터셉터 : 권한을 체크하는 함수(함수 실행전/후에 어떤 처리를 한다. 관리자 권한 체크, 로그인 여부 체크 등...)
 
 ### 카카오 API
-웹서버 : http://localhost:8080
-클라이언트 EST API 키 : 9fb8744cbc91ff1c85fd1641698b3d84
 
-카카오로그인요청 콜백주소 : http://localhost:8080/auth/kakao/callback
+인증 -> 토큰
+
+#### 인증
+웹서버 : http://localhost:8000
+클라이언트 REST API 키 : 9fb8744cbc91ff1c85fd1641698b3d84
+
+카카오로그인요청 콜백주소 : http://localhost:8000/blog/auth/kakao/callback
 카카오한테 받는 거 :  profile(필수), email(선택)
 
 
+* 카카오로그인 호출 URL
+GET /oauth/authorize?client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&response_type=code HTTP/1.1
+Host: kauth.kakao.com
+
+GET /oauth/authorize?client_id=9fb8744cbc91ff1c85fd1641698b3d84&redirect_uri=http://localhost:8000/blog/auth/kakao/callback&response_type=code
+Host: https://kauth.kakao.com/oauth/authorize?client_id=9fb8744cbc91ff1c85fd1641698b3d84&redirect_uri=http://localhost:8000/blog/auth/kakao/callback&response_type=code
+
+#### 토큰
+* 토큰 발급 주소
+POST /oauth/token HTTP/1.1
+Host: kauth.kakao.com
+Content-type: application/x-www-form-urlencoded;charset=utf-8  -->> 요건 key=value 형태로 데이터를 보내라하는 말
+
+https://kauth.kakao.com/oauth/token
+grant_type=authorization_code
+client_id=9fb8744cbc91ff1c85fd1641698b3d84
+redirect_uri=http://localhost:8000/blog/auth/kakao/callback
+code=필수아님, 동적인 값임
+
+* 토큰을 통한 사용자 정보 조회
+GET/POST /v2/user/me HTTP/1.1
+Host: kapi.kakao.com
+Authorization: Bearer {ACCESS_TOKEN}
+Content-type: application/x-www-form-urlencoded;charset=utf-8
 
 
 

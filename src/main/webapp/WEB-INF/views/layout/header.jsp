@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 
+<!-- 로그인정보가 아래 principal 변수명으로 저장되어 있다.(principal=PrincipalDetail) -->
 <sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
+	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 
 
@@ -18,6 +19,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -36,13 +39,14 @@
 				</c:when>
 				<c:otherwise>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/blog/board/form">글쓰기</a></li>
-						<li class="nav-item"><a class="nav-link" href="/blog/user/form">회원정보</a></li>
+						<li class="nav-item"><a class="nav-link" href="/blog/board/saveForm">글쓰기</a></li>
+						<li class="nav-item"><a class="nav-link" href="/blog/user/updateForm">회원정보</a></li>
 						<li class="nav-item"><a class="nav-link" href="/blog/logout">로그아웃</a></li>
+						<!-- /logout은 스프링에서 디폴트값이다. -->
 					</ul>
 				</c:otherwise>
 			</c:choose>
-			
+
 		</div>
 	</nav>
 	<br>

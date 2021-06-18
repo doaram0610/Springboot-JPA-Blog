@@ -25,20 +25,19 @@ The following guides illustrate how to use some features concretely:
 
 ####################################################################################
 ### 유트부 강좌 : Springboot - 나만의 블로그 만들기 총 73강
-	스프링부트 강좌 52강(블로그 프로젝트) -->> 요거 부터 듣기
+스프링부트 강좌 번외 강(블로그 프로젝트) -->> 요거 부터 듣기
 	
 ### 추가했던 library 6개 
-	Spring Boot DevTool : 자동재시작
-	Lombok : Vo 의 getter, setter  생략시켜두 되도록 가능
-	Spring Data JPA : DB 를 만들때 이걸 사용한다 (14강 참조)
-	MySQL Driver : DB 연결
-	Spring Security : 보안관련 라이브러리
-	Spring Web : 어노테이션 사용가능하도록 하며 톰캣을 탑재하고 있다
-	
-	pom.xml 을 수정하면 저장하는 동시에 다운로드+빌드를 함께 한다.
+Spring Boot DevTool : 자동재시작
+Lombok : Vo 의 getter, setter  생략시켜두 되도록 가능
+Spring Data JPA : DB 를 만들때 이걸 사용한다 (14강 참조)
+MySQL Driver : DB 연결
+Spring Security : 보안관련 라이브러리
+Spring Web : 어노테이션 사용가능하도록 하며 톰캣을 탑재하고 있다
+
+pom.xml 을 수정하면 저장하는 동시에 다운로드+빌드를 함께 한다.
 
 ### https://github.com/
-doaram0610 / infancy&79
 	
 0. git Repository 최초 생성후 
 	git init
@@ -134,3 +133,43 @@ Ctrl + Shift + F : 들여쓰기 정렬
 ### security taglib
 https://www.baeldung.com/spring-security-taglibs  접속해서 jsp include 형식 복사해온다
 docs.spring.io/spring-security/site/docs/3.0x/reference-access.html	security session 이용 방법
+
+※ 시큐리티로그인 실행 순서
+jsp(/blog/auth/loginProc) 요청 
+-> SecurityConfig(loginProcessingUrl 설정 확인) 
+-> UserDetailsService를 implements 받은 Service 에서 username 확인
+-> UserRepository.findByUsername 를 이용해 db값 추출(PrincipalDetail Vo 사용)
+-> SecurityConfig(passwordEncoder 설정 확인)에서 요청한 password 값을 해쉬암호화해서 db에서 가져온 값과 비교한다.
+-> 세션값에 유저정보 저장하고 성공페이지로 이동 (세션 성공적으로 생성)
+-> loginForm.jsp > SecurityConfig > PrincipalDetailService > PrincipalDetail > UserRepository > PrincipalDetailService > SecurityConfig 
+
+### 글쓰기 화면
+글쓰기 화면의 본문 html 편집기 코드 다운로드 : https://summernote.org/
+
+## 선생님 github
+https://github.com/codingspecialist
+
+### 스프링작동 원리
+톰캣 
+-> 필터 : 요청이 올때 걸러낸다.
+-> 디스패처 
+-> Controller : @Controller 는  화면으로 보여줄때, @RestController는 데이터로 보낼때 사용한다. 이때는 jdbc연결만 한다. 
+-> Service : 이걸 굳이 만들어서 사용하는 이유는 여기서 트랜잭션이 시작/종료되도록 해서 컨트롤러에서 요청처리는 하고 있어도 트랜잭션을 유지 하지 않아서 속도개선을 해준다.
+-> repository(JPA)
+-> 영속성 컨택스트 - DataSource - DB
+
+ViewResolver
+세션
+인터셉터 : 권한을 체크하는 함수(함수 실행전/후에 어떤 처리를 한다. 관리자 권한 체크, 로그인 여부 체크 등...)
+
+### 카카오 API
+웹서버 : http://localhost:8080
+클라이언트 EST API 키 : 9fb8744cbc91ff1c85fd1641698b3d84
+
+카카오로그인요청 콜백주소 : http://localhost:8080/auth/kakao/callback
+카카오한테 받는 거 :  profile(필수), email(선택)
+
+
+
+
+

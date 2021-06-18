@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Data	//getter + setter
 @Entity //Board클래스가 MySql에 테이블 생성
 public class Board {
 
@@ -39,13 +39,13 @@ public class Board {
 	@Lob
 	private String content;	//html 코드가 들어간 데이터
 	
-	@ColumnDefault("0")
 	private int count;
 	
-	@ManyToOne	// Many = Board, One = User  다대일
+	@ManyToOne(fetch = FetchType.EAGER)	// Many = Board, One = User  다대일
 	@JoinColumn(name = "userId")
 	private User user;	//DB 는 오브젝트를 저장할수 없다. FK,자바는 오브젝트를 저장할 수 있다.
 	
+	//mappedBy 는 FK 를 말하는게 아니다 나중에 SELECT 하기위해서 만든거다
 	@OneToMany(mappedBy="board", fetch=FetchType.LAZY)
 	private List<Reply> reply;
 	

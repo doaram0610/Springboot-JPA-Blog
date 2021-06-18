@@ -20,11 +20,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //@DynamicInsert	//insert 할때 null인 필드를 생략해준다.
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Entity //User클래스가 MySql에 테이블 생성
+@Builder	//생성자를 호출할때 보내야 하는 파라미터를 순서 상관없이 이름으로 지정할 수 있도록 한다. 예)val user = User(username = "zorba", password = "1111")
+@NoArgsConstructor	//파라미터 없는 생성자 함수 생성
+@AllArgsConstructor	//모든 파라미터 있는 생성자 함수 생성
+@Data	//getter + setter 생성
+@Entity //User클래스가 DB 에 테이블 생성
 public class User {
 	
 	@Id 

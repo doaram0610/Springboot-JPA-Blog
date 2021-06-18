@@ -1,5 +1,7 @@
 package com.cos.blog.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -19,5 +21,6 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 //	@Query(value="SELECT * FROM user WHERE username = ? AND password = ?", nativeQuery=true)
 //	User login(String username, String password);
 	
-	
+//	SELECT * FROM User WHERE username = ? : WHERE = findBy 이고 그 뒤 조건 필드명을 쓴다.
+	Optional<User> findByUsername(String username);
 }

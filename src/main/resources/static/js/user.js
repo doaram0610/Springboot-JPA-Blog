@@ -9,6 +9,9 @@
 		$("#btn-save").on("click", ()=>{	//function(){} 대신 ()=>{} 를 사용하는 이유는 this를 바인딩하기 위해서이다.
 			this.save();
 		});
+		$("#btn-update").on("click", ()=>{	//function(){} 대신 ()=>{} 를 사용하는 이유는 this를 바인딩하기 위해서이다.
+			this.update();
+		});		
 /*		
 		$("#btn-login").on("click", ()=>{	//function(){} 대신 ()=>{} 를 사용하는 이유는 this를 바인딩하기 위해서이다.
 			this.login();
@@ -41,7 +44,33 @@
 			console.log(error);
 			alert(JSON.stringify(error));
 		}); 
-	}
+	},
+	update:function(){
+		let data = {
+			id: $("#id").val(),
+			username: $("#username").val(),
+			password: $("#password").val(),
+			email: $("#email").val()
+		};
+			
+		//console.log(data);
+
+		$.ajax({
+			type:"PUT",
+			url:"/blog/user",
+			data:JSON.stringify(data),	//data는 자바스크립트오브젝트이고  JSON.stringify(data)는 json 데이터이다. (http body데이터)
+			contentType: "application/json;charset=utf-8",	// body데이터가 어떤 타입인지
+			dataType:"json"	//요청을 서버로 해서 응답이 왔을 때 json 문자열로 보낼 경우 javascript object 로 변경해준다.			
+		}).done(function(resp){						
+			console.log(resp);
+			console.log("회원정보가 수정되었다");	
+			alert("회원정보가 수정되었다");		
+			location.href = "/blog";
+		}).fail(function(error){
+			console.log(error);
+			alert(JSON.stringify(error));
+		}); 
+	}	
 /*	,	
 	login:function(){
 		let data = {

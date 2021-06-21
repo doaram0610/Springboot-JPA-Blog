@@ -31,7 +31,7 @@ public class User {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY) //시퀀스 자동 생성
 	private int id;
 	
-	@Column(nullable = false, length = 30, unique = true) //중복허용 안함(unique = true)
+	@Column(nullable = false, length = 100, unique = true) //중복허용 안함(unique = true)
 	private String username;
 	
 	@Column(nullable = false, length = 100)
@@ -39,6 +39,8 @@ public class User {
 	
 	@Column(nullable = false, length = 50)
 	private String email;
+	
+	private String oauth;	//kakao, google
 	
 	@Enumerated(EnumType.STRING)
 	//@ColumnDefault("'user'")

@@ -25,7 +25,7 @@ The following guides illustrate how to use some features concretely:
 
 
 ### 유트부 강좌 : Springboot - 나만의 블로그 만들기 총 73강
-스프링부트 강좌 65 강  11분 (블로그 프로젝트) -->> 요거 부터 듣기
+스프링부트 강좌 65 강 (블로그 프로젝트) -->> 요거 부터 듣기
 	
 ### 추가했던 library 6개 
 Spring Boot DevTool : 자동재시작
@@ -195,7 +195,7 @@ code=필수아님, 동적인 값임
 
 * 토큰을 통한 사용자 정보 조회
 GET/POST /v2/user/me HTTP/1.1
-Host: kapi.kakao.com
+Host: https://kapi.kakao.com/v2/user/me
 Authorization: Bearer {ACCESS_TOKEN}
 Content-type: application/x-www-form-urlencoded;charset=utf-8
 

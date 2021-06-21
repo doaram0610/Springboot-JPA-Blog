@@ -1,6 +1,8 @@
 package com.cos.blog.service;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -52,11 +54,16 @@ public class UserService {
 		User persistance = userRepository.findById(user.getId()).orElseThrow(()->{
 			return new IllegalArgumentException("회원 찾기 실패");
 		});
-		String rawPassword = user.getPassword();
-		String encPassword = encoder.encode(rawPassword);
-		persistance.setPassword(encPassword);
-		persistance.setEmail(user.getEmail());
 		
+		//Oauth 회원인 경우가 아닌 경우 즉 직접 회원가입한 사용자만 암호를 변경할 수 있다.
+		//카카오, 구글 등으로 Oauth 로 회원가입한 사용자는 회원정보를 수정할 수 없게 한다.
+		if(persistance.getOauth() == null || persistance.getOauth().equals("")) {
+			String rawPassword = user.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			persistance.setPassword(encPassword);
+			persistance.setEmail(user.getEmail());
+		}
+
 		//회원수정 함수 종료시 = 서비스 종료시 = 트랜잭션 종료 = commit 이 자동 수행
 		//영속화된 persistance 객체가 변화가 감지되면 더티체킹되어 변화된 것을 update 한다.		
 	}
@@ -66,4 +73,13 @@ public class UserService {
 //		
 //		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 //	}	
+	
+	@Transactional(readOnly = true)
+	public User find(String username) {
+
+		User user = userRepository.findByUsername(username).orElseGet(()->{
+			return new User();
+		});
+		return user;
+	}	
 }

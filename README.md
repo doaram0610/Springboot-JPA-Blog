@@ -1,1 +1,1 @@
-Security + jsp + 카카오
+Security + jsp
